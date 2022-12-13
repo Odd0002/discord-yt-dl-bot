@@ -49,8 +49,6 @@ def download_video(URL, channel_id):
             message_queue.put(start_message)
             info = ydl.extract_info(URL, download=True)
             filename = ydl.prepare_filename(info)
-            file_url = filename.replace(OUTPUT_DIR, SITE_PREFIX)
-            clean_url = urllib.parse.quote(file_url)
             message = MessageInfo("Download done of file {0}.".format(filename), channel_id)
             message_queue.put(message)
         except Exception as ex:
